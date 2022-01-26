@@ -42,7 +42,7 @@
       />
     </el-row>
     <!-- 添加和编辑的对话框 -->
-    <el-dialog title="添加品牌" :visible.sync="dialogFormVisible">
+    <el-dialog :title="tmForm.id ? '修改品牌': '添加品牌'" :visible.sync="dialogFormVisible">
       <el-form ref="brandRuleFrom" :model="tmForm" style="width: 80%" :rules="rules">
         <el-form-item label="品牌名称" label-width="100px" prop="tmName">
           <el-input v-model="tmForm.tmName" autocomplete="off" />
@@ -83,6 +83,7 @@ export default {
       total: 0,
       dialogFormVisible: false,
       tmForm: {
+        id: null,
         tmName: '',
         logoUrl: ''
       },
