@@ -85,23 +85,23 @@
 </template>
 
 <script>
-import CountTo from "vue-count-to";
+import CountTo from 'vue-count-to'
 export default {
   components: {
-    CountTo,
+    CountTo
   },
   data() {
     return {
-      currentType: "purchases",
-    };
+      currentType: 'purchases'
+    }
   },
   methods: {
     handleSetLineChartData(type) {
-      this.currentType = type;
-      this.$emit("handleSetLineChartData", type);
-    },
-  },
-};
+      this.currentType = type
+      this.$emit('handleSetLineChartData', type)
+    }
+  }
+}
 </script>
 
 <style lang="scss" scoped>

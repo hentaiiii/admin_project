@@ -91,7 +91,7 @@ export default {
     setTimeout(() => {
       this.lineChartDatas = lineChartDatas
       this.lineChartData = lineChartDatas.purchases
-    }, 1000);
+    }, 1000)
   },
 
   methods: {

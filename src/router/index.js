@@ -62,28 +62,66 @@ export const constantRoutes = [
     meta: { title: '商品管理', icon: 'el-icon-goods' },
     children: [
       {
-        path: '/trademark/list',
+        path: 'trademark/list',
         name: 'Trademark',
         component: () => import('@/views/product/Brand'),
         meta: { title: '品牌管理' }
       },
       {
-        path: '/attr/list',
+        path: 'attr/list',
         name: 'Attr',
         component: () => import('@/views/product/Attr'),
         meta: { title: '属性管理' }
       },
       {
-        path: '/spu/sku',
+        path: 'spu/sku',
         name: 'Spu',
         component: () => import('@/views/product/Spu'),
         meta: { title: 'SPU管理' }
       },
       {
-        path: '/sku/list',
+        path: 'sku/list',
         name: 'Sku',
         component: () => import('@/views/product/Sku'),
         meta: { title: 'SKU管理' }
+      }
+    ]
+  },
+  // 权限管理
+  {
+    path: '/acl',
+    name: 'ACL',
+    component: Layout,
+    redirect: '/product/trademark/list',
+    meta: { title: '权限管理', icon: 'el-icon-lock' },
+    children: [
+      {
+        path: 'user/list',
+        name: 'User',
+        component: () => import('@/views/acl/user'),
+        meta: { title: '用户管理' }
+      },
+      {
+        path: 'role/list',
+        name: 'Role',
+        component: () => import('@/views/acl/role'),
+        meta: { title: '角色管理' }
+      },
+      {
+        path: 'permission/list',
+        name: 'Permission',
+        component: () => import('@/views/acl/permission'),
+        meta: { title: '菜单管理' }
+      },
+      {
+        path: 'role/auth/:id',
+        name: 'RoleAuth',
+        component: () => import('@/views/acl/role/roleAuth'),
+        meta: {
+          activeMenu: '/acl/role/list',
+          title: '角色授权'
+        },
+        hidden: true
       }
     ]
   },
