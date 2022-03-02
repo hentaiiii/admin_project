@@ -30,19 +30,13 @@ import Layout from '@/layout'
  * a base page that does not have permission requirements
  * all roles can be accessed
  */
+// 常量路由--不同角色都可以看得见
 export const constantRoutes = [
   {
     path: '/login',
     component: () => import('@/views/login/index'),
     hidden: true
   },
-
-  {
-    path: '/404',
-    component: () => import('@/views/404'),
-    hidden: true
-  },
-
   {
     path: '/',
     component: Layout,
@@ -53,7 +47,11 @@ export const constantRoutes = [
       component: () => import('@/views/dashboard/index'),
       meta: { title: '首页', icon: 'dashboard' }
     }]
-  },
+  }
+]
+// 异步路由 -- 根据返回的routes来判定是否看得见
+export const asyncRoutes = [
+  // 商品管理
   {
     path: '/product',
     name: 'Product',
@@ -90,7 +88,7 @@ export const constantRoutes = [
   // 权限管理
   {
     path: '/acl',
-    name: 'ACL',
+    name: 'Acl',
     component: Layout,
     redirect: '/product/trademark/list',
     meta: { title: '权限管理', icon: 'el-icon-lock' },
@@ -125,7 +123,36 @@ export const constantRoutes = [
       }
     ]
   },
-
+  // 测试管理
+  {
+    path: '/test',
+    name: 'Test',
+    component: Layout,
+    redirect: '/product/trademark/list',
+    meta: { title: '测试管理', icon: 'el-icon-lock' },
+    children: [
+      {
+        path: 'test1/list',
+        name: 'Test1',
+        component: () => import('@/views/test/Test1'),
+        meta: { title: '测试管理1' }
+      },
+      {
+        path: 'test2/list',
+        name: 'Test2',
+        component: () => import('@/views/test/Test2'),
+        meta: { title: '测试管理2' }
+      }
+    ]
+  }
+]
+// 常量路由 - 404
+export const anyRoutes = [
+  {
+    path: '/404',
+    component: () => import('@/views/404'),
+    hidden: true
+  },
   // 404 page must be placed at the end !!!
   { path: '*', redirect: '/404', hidden: true }
 ]

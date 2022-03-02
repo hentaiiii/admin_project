@@ -33,8 +33,8 @@ router.beforeEach(async(to, from, next) => {
         try {
           // get user info
           await store.dispatch('user/getInfo')
-
-          next()
+          // 动态加载的路由不会自动刷新 需要手动给定地址
+          next({ ...to })
         } catch (error) {
           // remove token and go to login page to re-login
           await store.dispatch('user/resetToken')
